@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DB_PLANT_BCS_KPT" Class="DB_PLANT_BCSDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=10.14.101.101\shpol;Initial Catalog=DB_PLANT_BCS_KPT;User ID=sqlservices" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DB_PLANT_BCS_KPTConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TBL_BACKLOG" Member="TBL_BACKLOGs">
+    <Type Name="TBL_BACKLOG">
+      <Column Name="NO_BACKLOG" Type="System.String" DbType="VarChar(30) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="WO_NUMBER" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="WO_DATE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="EQP_NUMBER" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="EGI_ID" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="BACKLOG_DESC" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="COMPONENT_ID" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="HM_NUMBER" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="WR_NUMBER" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="WR_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PLAN_REP_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PLAN_REP_DATE2" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EST_HOUR" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="BACK_STATUS" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ACT_REP_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BACKLOG_CREATE_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DISTRICT" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="POSISI" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BACKLOG_ADM_SUBMIT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BACKLOG_PLANNER_SUBMIT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BACKLOG_LOGISTIC_SUBMIT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="STATUS_UPDATE_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BACKLOG_ADM_CLOSE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BACKLOG_STS_UPLOAD" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BACKLOG_UPLOAD_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BACKLOG_FIRST_ALERT" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="ID_ADM" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ID_PLANNER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ID_LOGISTIC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ID_VENDOR" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ID_ADM1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ID_ADM2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BACKLOG_COST" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="WR_NUMBER_COMPLETE" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="GL_NRP" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="GL_NAME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CLOSING_WO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CLOSING_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="VENDOR_STATUS" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PLAN_REP_DATE_OLD" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LOC_UNIT" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AUTO_CLOSING" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="ID_SEND_BACK_TO_PLANNER" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DATE_SEND_BACK_TO_PLANNER" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="REASON_SEND_BACK_TO_PLANNER" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="PLAN_FINISH_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="PLAN_FINISH_DATE2" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="MAN_POWER" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="WELDER" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_PART" Member="TBL_PARTs">
+    <Type Name="TBL_PART">
+      <Column Name="PART_ID" Type="System.String" DbType="VarChar(80) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DIST_CODE" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="PART_NUMBER" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="STOCK_CODE" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="PART_DESC" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PART_NAME" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PART_UOM" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PART_PR" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CLASS_CODE" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PART_PRICE_IDR" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="PART_PRICE_USD" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="UPLOAD" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_BACK_PART" Member="TBL_BACK_PARTs">
+    <Type Name="TBL_BACK_PART">
+      <Column Name="BACK_PART_ID" Type="System.String" DbType="VarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="PART_NUMBER" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="STOCK_CODE" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NO_BACKLOG" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="FIG_NUMBER" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="INDX_NUMBER" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="QTY_PART" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="INSPECTION_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EKS_INSPECTION" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="PART_STATUS" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="RECOM_PART_DATE" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AVAILABLE_PAMA" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="LOCATION_PAMA" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="ETA_PAMA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="VENDOR_PAMA" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="AVAILABLE_VENDOR" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="LOCATION_VENDOR" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="DOC_REF_VEN" Type="System.String" DbType="VarChar(80)" CanBeNull="true" />
+      <Column Name="ETA_VENDOR" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ETA_VENDOR2" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LAST_ACQ_DATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="QTY_ISSUED" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="UPLOAD_STATUS" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PART_CATATAN_VENDOR" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="WR_NUMBER" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="STOCK_CLASS" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ELL_USER_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ELL_PASSWORD" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ELL_POSISI" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ELL_DIST_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WH_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DELIV_INSTR" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="UPLOAD_REMARKS" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="UPLOAD_TIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ID_PO" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_TR1" Member="TBL_TR1s">
+    <Type Name="TBL_TR1">
+      <Column Name="TR1_ID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TR1_USER_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TR1_PASSWORD" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TR1_DIST_CODE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TR1_WONO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TR1_POSISI" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TR1_REP_DATE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TR1_UPLOAD_ELLIPSE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TR1_DESCRIPTION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TR1_EQUIPNO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TR1_NO_BACKLOG" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="TR1_WO_DATE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TR1_COMPONENTID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TR1_EGI_ID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TR1_STANDARD_JOB" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TR1_ORIG" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TR1_WORK_GROUP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TR1_JOB_ID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="TR1_REMARKS" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TR1_UPDATE_TIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="TR1_INSERT_TIME" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TR1_PLAN_FINISH_DATE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

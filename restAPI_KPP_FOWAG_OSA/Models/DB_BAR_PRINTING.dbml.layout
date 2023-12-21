@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="DB_BAR_PRINTING">
+  <DataContextMoniker Name="/DB_BAR_PRINTINGDataContext" />
+  <nestedChildShapes>
+    <classShape Id="53d8732a-7ea6-43d0-b214-6937a23b2810" isExpanded="false" absoluteBounds="0.5, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/DB_BAR_PRINTINGDataContext/TBL_T_JOB_PRINTING" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7b92ec01-0d1f-4774-8d4f-5d111c124d4e" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

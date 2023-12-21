@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DB__PLANT_OSA_KPT" Class="DB__PLANT_OSADataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=10.14.101.101\shpol;Initial Catalog=DB__PLANT_OSA_KPT;User ID=sqlservices" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DB__PLANT_OSA_KPTConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TBL_M_AKSES" Member="TBL_M_AKSEs">
+    <Type Name="TBL_M_AKSE">
+      <Column Name="ID_Menu" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_Role" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_R_MENU" Member="TBL_R_MENUs">
+    <Type Name="TBL_R_MENU">
+      <Column Name="ID_Menu" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name_Menu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Sub_Menu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Icon_Menu" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Link_Menu" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="[Order]" Member="Order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Akses" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_R_SUB_MENU" Member="TBL_R_SUB_MENUs">
+    <Type Name="TBL_R_SUB_MENU">
+      <Column Name="ID_Sub_Menu" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID_Menu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sub_Menu_Description" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Link_Sub_Menu" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Akses" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_R_MENU" Member="VW_R_MENUs">
+    <Type Name="VW_R_MENU">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="ID_Menu" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name_Menu" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Sub_Menu" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Icon_Menu" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Link_Menu" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="[Order]" Member="Order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TBL_T_UPLOADPAP" Member="TBL_T_UPLOADPAPs">
+    <Type Name="TBL_T_UPLOADPAP">
+      <Column Name="Lab" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="LabNumber" Type="System.String" DbType="VarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="District" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UnitModel" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="UnitNumber" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Component" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="UnitHM" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="OilHM" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="OilChanged" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="OilBrand" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="OilType" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="SamplingDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ReceivedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DateReported" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Condition" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="Pb" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Fe" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Al" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Cu" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Cr" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Sn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Ni" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Si" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Na" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Mg" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Zn" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Mo" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Ca" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="P" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="B" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="PQ" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TBN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TAN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Soot" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OXl" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Glycol" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Visc" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Fuel" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="WaterContent" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Comment" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Created_By" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Created_Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_REGISTER" Member="VW_REGISTERs">
+    <Type Name="VW_REGISTER">
+      <Column Name="LabNumber" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="NoBacklog" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UnitNumber" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="UnitModel" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="UnitHM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BacklogDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="InspectonDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Inspector" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WorkGroup" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="StandarJob" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NRPGL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OriginatorID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PlanRepairDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Manpower" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HourEstimation" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DSTRCT" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="ComponentCode" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Lab" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_REGISTER_BACKLOG" Member="VW_REGISTER_BACKLOGs">
+    <Type Name="VW_REGISTER_BACKLOG">
+      <Column Name="LabNumber" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="NoBacklog" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UnitNumber" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="UnitModel" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="UnitHM" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BacklogDesc" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="InspectonDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Inspector" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WorkGroup" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="StandarJob" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NRPGL" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OriginatorID" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PlanRepairDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Manpower" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="HourEstimation" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DSTRCT" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="ComponentCode" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="Lab" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_LABEL_FORM" Member="VW_LABEL_FORMs">
+    <Type Name="VW_LABEL_FORM">
+      <Column Name="LabNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="WO" Type="System.String" DbType="Char(8)" CanBeNull="true" />
+      <Column Name="DSTRCT" Type="System.String" DbType="Char(4)" CanBeNull="true" />
+      <Column Name="UnitModel" Type="System.String" DbType="Char(12)" CanBeNull="true" />
+      <Column Name="UnitNumber" Type="System.String" DbType="Char(12)" CanBeNull="true" />
+      <Column Name="WORK_GROUP" Type="System.String" DbType="Char(7)" CanBeNull="true" />
+      <Column Name="UnitHM" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Manufacture" Type="System.String" DbType="Char(8)" CanBeNull="true" />
+      <Column Name="ComponentCode" Type="System.String" DbType="Char(4)" CanBeNull="true" />
+      <Column Name="SamplingDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="OilBrand" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OilType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OilSpec" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OilHM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NRP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PIC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OilChanged" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TypeOilHM" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Component" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_KARYAWAN_PLANT" Member="VW_KARYAWAN_PLANTs">
+    <Type Name="VW_KARYAWAN_PLANT">
+      <Column Name="EMPLOYEE_ID" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="NAME" Type="System.String" DbType="VarChar(61)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_REVIEW_LABNUMBER" Member="VW_REVIEW_LABNUMBERs">
+    <Type Name="VW_REVIEW_LABNUMBER">
+      <Column Name="LabNumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NoWO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UnitHM" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Component" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="SamplingDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="OilBrand" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OilType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OilSpec" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OilHM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NRP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="PIC" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="OilChanged" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="District" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TypeOilHM" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UpdatedDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="UpdateBy" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="SampleType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Manufacture" Type="System.String" DbType="Char(8)" CanBeNull="true" />
+      <Column Name="UnitModel" Type="System.String" DbType="Char(12)" CanBeNull="true" />
+      <Column Name="UnitNumber" Type="System.String" DbType="Char(12)" CanBeNull="true" />
+      <Column Name="ComponentCode" Type="System.String" DbType="Char(4)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_WORKGROUP_BACKLOG" Member="VW_WORKGROUP_BACKLOGs">
+    <Type Name="VW_WORKGROUP_BACKLOG">
+      <Column Name="work_group" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="work_grp_desc" Type="System.String" DbType="VarChar(40)" CanBeNull="true" />
+      <Column Name="dstrct_code" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_OILBRANDTYPE" Member="VW_OILBRANDTYPEs">
+    <Type Name="VW_OILBRANDTYPE">
+      <Column Name="OilBrand" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Brand" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OilType" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_OIL" Member="VW_OILs">
+    <Type Name="VW_OIL">
+      <Column Name="Id_Spec" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OilSpec" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Brand" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OilBrand" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Id_Type" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OilType" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Function Name="dbo.sp_insertBackPartBacklog_BCS" Method="sp_insertBackPartBacklog_BCS">
+    <Parameter Name="BackPart_ID" Parameter="backPart_ID" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="PartNumber" Parameter="partNumber" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="NoBackLog" Parameter="noBackLog" Type="System.String" DbType="VarChar(30)" />
+    <Parameter Name="QtyPart" Parameter="qtyPart" Type="System.Int32" DbType="Int" />
+    <Parameter Name="InspectionDate" Parameter="inspectionDate" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="EksInspection" Parameter="eksInspection" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="StockCode" Parameter="stockCode" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="FigNo" Parameter="figNo" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="IndexNo" Parameter="indexNo" Type="System.String" DbType="VarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_insertPartBacklog_BCS" Method="sp_insertPartBacklog_BCS">
+    <Parameter Name="PART_ID" Parameter="pART_ID" Type="System.String" DbType="VarChar(80)" />
+    <Parameter Name="DIST_CODE" Parameter="dIST_CODE" Type="System.String" DbType="VarChar(40)" />
+    <Parameter Name="PART_NUMBER" Parameter="pART_NUMBER" Type="System.String" DbType="VarChar(40)" />
+    <Parameter Name="STOCK_CODE" Parameter="sTOCK_CODE" Type="System.String" DbType="VarChar(40)" />
+    <Parameter Name="PART_DESC" Parameter="pART_DESC" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="PART_NAME" Parameter="pART_NAME" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="PART_UOM" Parameter="pART_UOM" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="CLASS_CODE" Parameter="cLASS_CODE" Type="System.String" DbType="VarChar(MAX)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "Review Data PAP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<input type="text" id="web_link" value="@Session["Web_Link"]" hidden />
+
+<div class="content">
+    <h2 class="content-heading"><b>Review Data PAP</b></h2>
+
+    <!-- Dynamic Table Full -->
+    <div class="block">
+        <div class="block-header block-header-default">
+            <h3 class="block-title">Table Review PAP</h3>
+            <div class="block-options">
+                <label>Select Lab</label>
+                <select id="txtLAB" class="js-select2 wg-class" @*onchange="Lab_change()"*@>
+                    <option value="0"></option>
+                    <option value="1">Petrolab</option>
+                    <option value="2">Technomics</option>
+                    <option value="3">OSA PAMA</option>
+                </select>
+            </div>
+        </div>
+        <div class="block-header block-header-default">
+            <div class="distrik-filter" id="filter_dstrct" style="display:block;">
+                <label>District</label>
+                <select @*onchange="changeDSTRCT(this.value)"*@ class="js-select2 wg-class" id="filter_distrik" name="filter_distrik">
+                </select>
+            </div>
+            <div class="model-filter" id="filter_model" style="display:block;">
+                <label>Unit Model</label>
+                <select @*onchange="changeUNITMOD(this.value)"*@ class="js-select2 wg-class" id="filter_unitmod" name="filter_unitmod">
+                </select>
+            </div>
+            <div class="number-filter" id="filter_number" style="display:block;">
+                <label>Unit Number</label>
+                <select @*onchange="changeUNITNO(this.value)"*@ class="js-select2 wg-class" id="filter_unitnum" name="filter_unitnum">
+                </select>
+            </div>
+            <div class="comp-filter" id="filter_comp" style="display:block;">
+                <label>Component</label>
+                <select @*onchange="changeCOMP(this.value)"*@ class="js-select2 wg-class" id="filter_component" name="filter_component">
+                </select>
+            </div>
+
+        </div>
+        <div class="block-header block-header-default">
+            <h4 class="block-title"></h4>
+            <div class="block-options">
+                <button type="submit" id="find" class="btn btn-alt-success" onclick="Find()" style="display:block;">
+                    <i class="fa fa-search mr-5"></i> Find
+                </button>
+            </div>
+            <div class="block-options">
+                <button type="submit" id="clean" class="btn btn-alt-warning" onclick="Clean()" style="display:block;">
+                    <i class="fa fa-trash mr-5"></i> Clean
+                </button>
+            </div>
+        </div>
+        <div class="block-content block-content-full">
+            @*<div class="lab-filter">
+                    <select onchange="changeLab(this.value)" class="js-select2 wg-class" id="txt_lab" name="txt_lab">
+                    </select>
+                </div>*@
+            <br />
+            <table id="tblReviewPAP" class="table table-striped table-bordered nowrap" style="width:100%">
+                <thead>
+                    <tr style="width: 100%">
+                        @*<th><b>No</b></th>*@
+                        <th><b>Lab</b></th>
+                        <th><b>Lab Number</b></th>
+                        <th><b>District</b></th>
+                        <th><b>Unit Model</b></th>
+                        <th><b>Unit Number</b></th>
+                        <th><b>Component</b></th>
+                        <th><b>Unit HM</b></th>
+                        <th><b>Oil HM</b></th>
+                        <th><b>Oil Changed</b></th>
+                        <th><b>Oil Brand</b></th>
+                        <th><b>Oil Type</b></th>
+                        <th><b>Sampling Date</b></th>
+                        <th><b>Received Data</b></th>
+                        <th><b>Condition</b></th>
+                        <th><b>Pb</b></th>
+                        <th><b>Fe</b></th>
+                        <th><b>Al</b></th>
+                        <th><b>Cu</b></th>
+                        <th><b>Cr</b></th>
+                        <th><b>Sn</b></th>
+                        <th><b>Ni</b></th>
+                        <th><b>Si</b></th>
+                        <th><b>Na</b></th>
+                        <th><b>Mg</b></th>
+                        <th><b>Zn</b></th>
+                        <th><b>Mo</b></th>
+                        <th><b>Ca</b></th>
+                        <th><b>P</b></th>
+                        <th><b>B</b></th>
+                        <th><b>TBN</b></th>
+                        <th><b>TAN</b></th>
+                        <th><b>Soot</b></th>
+                        <th><b>Glycol</b></th>
+                        <th><b>Visc</b></th>
+                        <th><b>Comment</b></th>
+                        <th><b>No Backlog</b></th>
+                        <th><b>Follow Up</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/New Js/ReviewPAP_Index.js"></script>

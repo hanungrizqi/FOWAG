@@ -1,0 +1,373 @@
+﻿@model KPP_FOWAG_OSA.Models.VW_REGISTER_BACKLOG
+
+@{ ViewBag.Title = "Register Backlog";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+<input type="text" id="txt_LabNumber" name="txt_LabNumber" value="@ViewBag.LabNumber"  hidden>
+<input type="text" id="txt_backlogBCS" name="txt_backlogBCS" value="@ViewBag.backlogBCS" hidden>
+
+<div class="content">
+    <h2 class="content-heading"><b>Register Backlog</b></h2>
+
+    <!-- Dynamic Table Full -->
+    <div class="block">
+        <div class="block-header block-header-default">
+            <h4 class="block-title">Register Backlog</h4>
+            <div class="block-options">
+                <a href="/ReviewPAP/Index" class="btn btn-alt-warning">
+                    <i class="fa fa-arrow-left mr-5"></i> Back
+                </a>
+
+                @*<button type="submit" class="btn btn-alt-success" onclick="cleanData()">
+                <i class="fa fa-eraser mr-5"></i> clear
+            </button>*@
+
+            </div>
+            <div class="block-options">
+                <button type="submit" id="register" class="btn btn-alt-info" onclick="RegisterBacklog()" style="display:block;">
+                    <i class="fa fa-save mr-5"></i> register
+                </button>
+            </div>
+            @*<div class="block-options">
+                <button type="submit" id="btn_save" class="btn btn-alt-info" onclick="SaveBacklog()" style="display:block;">
+                    <i class="fa fa-save mr-5"></i> Save
+                </button>
+            </div>*@
+        </div>
+
+            <div class="block-content">
+
+                <form action="#" method="post" onsubmit="return false;">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="txt_NoBacklog">No Backlog</label>
+                                <div class="col-lg-7">
+                                    <input type="text" class="form-control" id="txt_NoBacklog" name="txt_NoBacklog" value="@Html.DisplayFor(modelItem => Model.NoBacklog)" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="txt_labDistrict">District</label>
+                                <div class="col-lg-7">
+                                    <input type="text" class="form-control" id="txt_labDistrict" name="txt_labDistrict" value="@Html.DisplayFor(modelItem => Model.DSTRCT)" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="txt_EqpNumber">Eqp Number</label>
+                                <div class="col-lg-7">
+                                    <input type="text" class="form-control" id="txt_EqpNumber" name="txt_EqpNumber" value="@Html.DisplayFor(modelItem => Model.UnitNumber)" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="txt_CompCode">Component Code</label>
+                                <div class="col-lg-7">
+                                    <input type="text" class="form-control" id="txt_CompCode" name="txt_CompCode" value="@Html.DisplayFor(modelItem => Model.ComponentCode)" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="txt_EGI">EGI</label>
+                                <div class="col-lg-7">
+                                    <input type="text" class="form-control" id="txt_EGI" name="txt_EGI" value="@Html.DisplayFor(modelItem => Model.UnitModel)" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="txt_HM">HM</label>
+                                <div class="col-md-7">
+                                    <input type="number" class="form-control" id="txt_HM" name="txt_HM" value="@Html.DisplayFor(modelItem => Model.UnitHM)" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="txt_BacklogDesc">Backlog Description</label>
+                                <div class="col-lg-7">
+                                    <input type="text" class="form-control" id="txt_BacklogDesc" name="txt_BacklogDesc" value="@Html.DisplayFor(modelItem => Model.BacklogDesc)" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="txt_InspectonDate">Inspecton date</label>
+                                <div class="col-lg-7">
+                                    <input type="date" class="form-control" id="txt_InspectonDate" name="txt_InspectonDate" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="txt_Sources">Sources</label>
+                                <div class="col-lg-7">
+                                    <input type="text" class="form-control" id="txt_Sources" name="txt_Sources" value="PAP" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="txt_Inspector">Inspector</label>
+                                <div class="col-lg-7">
+                                    <input type="text" class="form-control" id="txt_Inspector" name="txt_Inspector" value="@Session["Nrp"].ToString()" disabled>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="txt_WorkGroup">Work Group</label>
+                                <div class="col-lg-7">
+                                    <select class="js-select2 form-control" id="txt_WorkGroup" name="txt_WorkGroup" style="width: 100%;" required>
+                                        <option value=""></option>
+                                        @foreach (var item in ViewBag.WG)
+                                        {
+
+
+                                            if (ViewBag.work_group != null)
+                                            {
+                                                if (item.work_group == ViewBag.work_group)
+                                                {
+                                                    <option value="@item.work_group" selected>@item.work_grp_desc</option>
+                                                }
+                                                else if (ViewBag.nrpGL == "")
+                                                {
+                                                    <option value="@item.work_group">@item.work_grp_desc</option>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.work_group">@item.work_grp_desc</option>
+                                            }
+
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="txt_StandarJob">Standar Job</label>
+                                <div class="col-lg-7">
+                                    <select class="js-select2 form-control" id="txt_StandarJob" name="txt_StandarJob" style="width: 100%;" required>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="txt_NRPGL">NRP GL</label>
+                                <div class="col-lg-7">
+                                    <select class="js-select2 form-control" id="txt_NRPGL" name="txt_NRPGL" style="width: 100%;" value="" required>
+                                        <option value=""></option>
+
+                                        @foreach (var item in ViewBag.DataKary)
+                                        {
+                                            if (ViewBag.nrpGL != null)
+                                            {
+                                                if (item.EMPLOYEE_ID.Trim() == ViewBag.nrpGL)
+                                                {
+                                                    <option value="@item.EMPLOYEE_ID.Trim()" selected>@item.EMPLOYEE_ID - @item.NAME</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.EMPLOYEE_ID.Trim()">@item.EMPLOYEE_ID - @item.NAME</option>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.EMPLOYEE_ID.Trim()">@item.EMPLOYEE_ID - @item.NAME</option>
+                                            }
+
+                                        }
+
+                                    </select>
+
+                                    <input type="text" name="txt_pic" value="" hidden />
+                                </div>
+                            </div>
+                            <div class="form-group row" @*id="orig-edit" style="display:none"*@>
+                                <label class="col-lg-4 col-form-label" for="txt_OriginatorID">Originator ID</label>
+                                <div class="col-lg-7" @*id="orig-edit1" style="display:none"*@>
+                                    <select class="js-select2 form-control" id="txt_OriginatorID" name="txt_OriginatorID" style="width: 100%;" required>
+                                        <option value=""></option>
+                                        @foreach (var item in ViewBag.DataKary)
+                                        {
+                                            if (ViewBag.orig != null)
+                                            {
+                                                if (item.EMPLOYEE_ID.Trim() == ViewBag.orig)
+                                                {
+                                                    <option value="@item.EMPLOYEE_ID.Trim()" selected>@item.EMPLOYEE_ID - @item.NAME</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.EMPLOYEE_ID.Trim()">@item.EMPLOYEE_ID - @item.NAME</option>
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.EMPLOYEE_ID.Trim()">@item.EMPLOYEE_ID - @item.NAME</option>
+                                            }
+
+                                        }
+
+                                    </select>
+                                </div>
+                            </div>
+                            @*<div class="form-group row" id="orig-ori" style="display:block;"> 
+                                <label class="col-lg-4 col-form-label" for="txt_OriginatorID">Originator ID</label>
+                                <div class="col-lg-7" id="orig-ori1" style="display:block;">
+                                    <select class="js-select2 form-control" id="txt_OriginatorID" name="txt_OriginatorID" style="width: 100%;" required>
+                                    </select>
+                                </div>
+                            </div>*@
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="txt_PRDate">Plain Repair Date</label>
+                                <div class="col-md-7">
+                                    <input type="date" class="form-control" id="txt_PRDate" name="txt_PRDate" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="txt_Manpower">Manpower</label>
+                                <div class="col-lg-7">
+                                    <input type="number" class="form-control" id="txt_Manpower" name="txt_Manpower" value="@Html.DisplayFor(modelItem => Model.Manpower)" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label" for="txt_HourE">Hour Estimation</label>
+                                <div class="col-lg-7">
+                                    <input type="number" class="form-control" id="txt_HourE" step="any" name="txt_HourE" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <hr />
+                <div class="w-100 text-center">
+                    <Label><b>Recommended Part</b></Label>
+                </div>
+                <div id="btnAddPart" style="display:block;">
+                    <button type="button" class="btn btn-alt-success" data-toggle="modal" data-target="#modal_addPart" >
+                        <i class="fa fa-plus mr-5"></i> Add Part
+                    </button>
+                </div>
+                <table id="tblRecPart" class="table table-striped table-bordered nowrap" style="width:100%">
+                    <thead>
+                        <tr style="width: 100%">
+                            <th><b>No</b></th>
+                            <th><b>Part No</b></th>
+                            <th><b>Stock Code</b></th>
+                            <th><b>Part Description</b></th>
+                            <th><b>Unit Issue</b></th>
+                            <th><b>Part Class</b></th>
+                            <th><b>Fig No</b></th>
+                            <th><b>Index No</b></th>
+                            <th><b>Qty</b></th>
+                            <th><b>Action</b></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <br /><br />
+            </div>
+        </div>
+</div>
+
+<!-- Large Modal Add Part -->
+<div class="modal" id="modal_addPart" role="dialog" aria-labelledby="modal_addPart" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent mb-0">
+                <div class="block-header bg-primary-dark">
+                    <h3 class="block-title">Add Recommended Part</h3>
+                    <div class="block-options">
+                        <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                            <i class="si si-close"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="block-content">
+                    <div class="form-group row">
+                        <div class="col-md-8" style="margin-bottom:2px;">
+                            <input type="text" class="form-control" id="txt_sPart" name="txt_sPart">
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <button type="button" onclick="searchPart()" class="btn btn-alt-primary">
+                                <i class="fa fa-search mr-5"></i>Search
+                            </button>
+                        </div>
+                    </div>
+                    <table id="tblAddPart" class="table table-striped table-bordered nowrap" width="100%">
+                        <thead>
+                            <tr>
+                                <th><b></b></th>
+                                <th><b>Part No</b></th>
+                                <th><b>Stock Code</b></th>
+                                <th><b>Part Description</b></th>
+                                <th><b>Mnemonic</b></th>
+                                <th><b>Class</b></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <br /><br />
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="txt_FigNo">Fig No</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="txt_FigNo" name="txt_FigNo">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="txt_IndexNo">Index No</label>
+                        <div class="col-md-9">
+                            <input type="number" class="form-control" id="txt_IndexNo" name="txt_IndexNo">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="txt_Qty">Qty</label>
+                        <div class="col-md-9">
+                            <input type="number" class="form-control" id="txt_Qty" name="txt_Qty">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</button>
+                <button type="button" onclick="savePart()" class="btn btn-alt-success" data-dismiss="modal">
+                    <i class="fa fa-check"></i> Submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Large Modal Add Part-->
+
+<!-- Large Modal Edit Part -->
+<div class="modal" id="modal_editPart" role="dialog" aria-labelledby="modal_editPart" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent mb-0">
+                <div class="block-header bg-primary-dark">
+                    <h3 class="block-title">Edit Recommended Part</h3>
+                    </div>
+                    <br />
+                    <div class="form-group row" style="margin:auto" >
+                        <label class="col-md-3 col-form-label" for="edittxt_FigNo">Fig No</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="edittxt_FigNo" name="txt_FigNo">
+                        </div>
+                    </div>
+                <br />
+                    <div class="form-group row" style="margin:auto">
+                        <label class="col-md-3 col-form-label" for="edittxt_IndexNo">Index No</label>
+                        <div class="col-md-9">
+                            <input type="number" class="form-control" id="edittxt_IndexNo" name="txt_IndexNo">
+                        </div>
+                    </div>
+                <br />
+                    <div class="form-group row" style="margin:auto">
+                        <label class="col-md-3 col-form-label" for="edittxt_Qty">Qty</label>
+                        <div class="col-md-9">
+                            <input type="number" class="form-control" id="edittxt_Qty" name="txt_Qty">
+                        </div>
+                    </div>
+                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="btn_update" value="" onclick="updatePart(this.value)" class="btn btn-alt-success" data-dismiss="modal">
+                    <i class="fa fa-check"></i> Update
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Large Modal Edit Part-->
+
+<script src="~/Scripts/New Js/ReviewPAP_RegisterBacklog.js"></script>

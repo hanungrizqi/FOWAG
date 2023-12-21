@@ -1,0 +1,219 @@
+﻿
+@{
+    ViewBag.Title = "Sample Due Date";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<input type="text" name="role" id="role" value="@Session["ID_Role"]" hidden />
+
+<div class="content">
+    <h2 class="content-heading"><b>Sample Due Date</b></h2>
+
+    <!-- Dynamic Table Full -->
+    <div class="block">
+        <div class="block-header block-header-default">
+            <h3 class="block-title">Table Sample Due Date</h3>
+            <div class="block-options">
+               
+            </div>
+        </div>
+        <div class="block-content block-content-full">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="input-group">
+                        <input type="text" name="txt_WO" id="txt_WO" class="form-control" placeholder="input work order" />
+                        <select @*onchange="addDistrict()"*@ onchange="changeDSTRCT(this.value)" @*data-bind="value: txt_DSTRCT"*@ class="form-control" id="txt_DSTRCT" name="txt_DSTRCT">
+                        </select>
+                        @*<select id="txt_DSTRCT" class="form-control">
+                            <option hidden>Select District</option>
+                            <option value="BDMA">BDMA</option>
+                            <option value="INDE">INDE</option>
+                            <option value="KPHO">KPHO</option>
+                            <option value="MASS">MASS</option>
+                            <option value="PCNS">PCNS</option>
+                            <option value="PELH">PELH</option>
+                            <option value="RANT">RANT</option>
+                            <option value="SJRP">SJRP</option>
+                            <option value="TMRB">TMRB</option>
+                            <option value="TOPB">TOPB</option>
+                        </select>*@
+                        <div class="input-group-append">
+                            <button type="button" onclick="newLabel()" class="btn btn-secondary">New Label</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr /><br />
+            <div class="workgroup-filter">
+                <select onchange="changeWG(this.value)" class="js-select2 wg-class" id="txt_WG" name="txt_WG">
+                </select>
+            </div>
+            <table id="tblSampelDD" class="table table-striped table-bordered nowrap" style="width:100%">
+                <thead>
+                    <tr>
+                        <th><b>Lab Number</b></th>
+                        <th></th>
+                        <th><b>No WO</b></th>
+                        <th><b>District</b></th>
+                        <th><b>Unit Model</b></th>
+                        <th><b>Unit Number</b></th>
+                        <th><b>Component</b></th>
+                        <th><b>Unit HM</b></th>
+                        <th><b>Oil HM</b></th>
+                        <th><b>Status</b></th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@*<script src="~/Scripts/page/SampleDueDate1.js"></script>*@
+<script>
+    var webLink = $("#web_link").val();
+    var role = $("#role").val();
+    addDistrict();
+    //$("document").ready(function () {
+    //    $("#tblSampelDD_filter.dataTables_filter").append($("#txt_WG"));
+    //})
+
+    function changeDSTRCT(distrik) {
+        //tableSent.columns(1).search(distrik).draw();
+    }
+
+    function addDistrict() {
+        $.ajax({
+            url: webLink + "/api/SampleDueDate/Get_District", //URI,
+            type: "GET",
+            cache: false,
+            success: function (result) {
+                $('#txt_DSTRCT').empty();
+                text = '<option value="">Select District</option>';
+                $.each(result.Data, function (key, val) {
+                    text += '<option value="' + val.dstrct_code + '">' + val.dstrct_code + '</option>';
+                });
+                $("#txt_DSTRCT").append(text);
+            }
+        });
+    }
+
+    var webLink = $("#web_link").val();
+    addWorkGroup();
+    $("document").ready(function () {
+        $("#tblSampelDD_filter.dataTables_filter").append($("#txt_WG"));
+    })
+
+    //Table
+    var tableSent = $("#tblSampelDD").DataTable({
+        ajax: {
+            url: webLink + "/api/SampleDueDate/Get_SampleDueDate?role=" + role,
+            dataSrc: "Data",
+        },
+        scrollX: true,
+        "searching": true,
+        "dom": '<f<t>p>',
+        order: [[0, 'desc']],
+        columns: [
+            { data: 'LabNumber' },
+            { data: 'WORK_GROUP', visible: false },
+            { data: 'WO' },
+            { data: 'DSTRCT' },
+            { data: 'UnitModel' },
+            { data: 'UnitNumber' },
+            /*{ data: 'ComponentCode - Component' },*/
+            {
+                data: null,
+                targets: 'no-sort', orderable: false,
+                render: function (data, type, row) {
+                    {
+                        var Comp = "";
+                        if (row.Component != null) {
+                            Comp = row.ComponentCode + "-" + row.Component;
+                        } else if (row.Component == null) {
+                            Comp = row.ComponentCode;
+                        } else {
+                            Comp = null;
+                        }
+                        return Comp;
+                    }
+                }
+            },
+            { data: 'UnitHM' },
+            { data: 'OilHM' },
+            {
+                data: null,
+                targets: 'no-sort', orderable: false,
+                render: function (data, type, row) {
+                    var showStatus = "";
+                    if (row.Status == null) {
+                        showStatus = `<a href="/SampleDueDate/labelform?wo=${row.WO}&dstrct=${row.DSTRCT}&compcode=${row.ComponentCode}&complbl=${row.Component}">Open</a>`;
+                    }
+                    //else {
+                    //    showStatus = `<a href="/SampleDueDate/labelform?wo=${row.WO}&dstrct=${row.DSTRCT}&compcode=${row.ComponentCode}&complbl=${row.Component}">${row.Status}</a>`;
+                    //}
+                    else if (row.Status == "Printed") {
+                        //showStatus = row.Status;
+                        showStatus = `<a href="/SampleDueDate/LabelFormPrint?labnum=${row.LabNumber}">${row.Status}</a>`;
+                    }
+                    else if (row.Status == "On Lab") {
+                        //showStatus = row.Status;
+                        showStatus = `<a href="/SampleDueDate/LabelFormOnLab?labnum=${row.LabNumber}">${row.Status}</a>`;
+                    }
+                    else if (row.Status == "Saved") {
+                        //showStatus = row.Status;
+                        showStatus = `<a href="/SampleDueDate/LabelFormSaved?labnum=${row.LabNumber}">${row.Status}</a>`;
+                    }
+                    return showStatus;
+                }
+            }
+        ],
+    });
+
+    function newLabel() {
+        var DataWo = $("#txt_WO").val();
+        var district = $("#txt_DSTRCT").val();
+        if (DataWo == "") {
+            return;
+        } else {
+            $.ajax({
+                url: $("#web_link").val() + "/api/SampleDueDate/Get_SampleDueDate_ByID?wo=" + DataWo + '&dstrct=' + district, //URI
+                success: function (result) {
+                    if (result.Data == null) {
+                        Swal.fire(
+                            'Error!',
+                            'Work Order not found',
+                            'warning'
+                        );
+                    } else {
+                        window.location.href = `/SampleDueDate/labelform?wo=${result.Data.WO}&dstrct=${district}`;
+                    }
+                }
+
+            })
+
+        }
+    }
+
+    function addWorkGroup() {
+        $.ajax({
+            url: webLink + "/api/WorkGroup/Get_WorkGroup", //URI,
+            type: "GET",
+            cache: false,
+            success: function (result) {
+                $('#txt_WG').empty();
+                text = '<option value="">All Work Group</option>';
+                $.each(result.Data, function (key, val) {
+                    text += '<option value="' + val.WorkGroup + '">' + val.Dstrct + '</option>';
+                });
+                $("#txt_WG").append(text);
+            }
+        });
+    }
+
+    function changeWG(wg) {
+        tableSent.columns(1).search(wg).draw();
+    }
+
+</script>

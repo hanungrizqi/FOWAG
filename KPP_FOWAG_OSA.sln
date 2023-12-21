@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KPP_FOWAG_OSA", "KPP_FOWAG_OSA\KPP_FOWAG_OSA.csproj", "{405A5B34-266E-44A8-AE55-0A865A8371EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "restAPI_KPP_FOWAG_OSA", "restAPI_KPP_FOWAG_OSA\restAPI_KPP_FOWAG_OSA.csproj", "{7A7CA628-902B-45DB-8DE7-BBE87A858780}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{405A5B34-266E-44A8-AE55-0A865A8371EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{405A5B34-266E-44A8-AE55-0A865A8371EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{405A5B34-266E-44A8-AE55-0A865A8371EA}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{405A5B34-266E-44A8-AE55-0A865A8371EA}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{7A7CA628-902B-45DB-8DE7-BBE87A858780}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A7CA628-902B-45DB-8DE7-BBE87A858780}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A7CA628-902B-45DB-8DE7-BBE87A858780}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A7CA628-902B-45DB-8DE7-BBE87A858780}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {662C34BE-BF69-4CA0-B20B-2C83DACE87F6}
+	EndGlobalSection
+EndGlobal

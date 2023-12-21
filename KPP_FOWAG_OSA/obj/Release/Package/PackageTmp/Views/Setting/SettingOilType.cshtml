@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewBag.Title = "SettingOilType";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="content">
+    <h2 class="content-heading"><b>Setting Oil Type</b></h2>
+
+    <!-- Dynamic Table Full -->
+    <div class="block">
+        <div class="block-header block-header-default">
+            <h3 class="block-title">Table Oil Type</h3>
+            <div class="block-options">
+                <button type="submit" class="btn btn-alt-success" data-toggle="modal" data-target="#ModalAddOilType">
+                    <i class="fa fa-plus mr-5"></i> New Oil Type
+                </button>
+            </div>
+        </div>
+        <div class="block-content block-content-full">
+            <table id="tblOilType" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+                <thead>
+                    <tr style="width: 100%">
+                        <th style="width: 14%;"><b>ID </b></th>
+                        <th style="width: 20%;"><b>Oil Brand</b></th>
+                        <th style="width: 45%;"><b>Oil Type</b></th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Pop Out Modal for Add New Role -->
+<div class="modal fade" id="ModalAddOilType" tabindex="-1" role="dialog" aria-labelledby="modal-popout" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-popout" role="document">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent mb-0">
+                <div class="block-header bg-primary-dark">
+                    <h3 class="block-title">Add New Oil Type</h3>
+                    <div class="block-options">
+                        <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                            <i class="si si-close"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="block-content">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <div class="form-material floating">
+                                        <select class="js-select2 form-control" id="txt_oilBrand" name="txt_oilBrand" style="width: 100%;" required>
+                                        </select>
+                                        <label for="material-text2">Oil Brand</label>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-material floating">
+                                        <input type="text" class="form-control" name="oilType" id="oilType" value="" />
+                                        <label for="material-text2">Oil Type</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-alt-success" data-dismiss="modal" onclick="addOilType()">
+                    <i class="fa fa-check"></i> submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Pop Out Modal -->
+<!-- Pop Out Modal for edit Role-->
+<div class="modal fade" id="ModalEditOilType" tabindex="-1" role="dialog" aria-labelledby="modal-popout" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-popout" role="document">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent mb-0">
+                <div class="block-header bg-primary-dark">
+                    <h3 class="block-title">Edit Oil Type</h3>
+                    <div class="block-options">
+                        <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                            <i class="si si-close"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="block-content">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <div class="form-material floating">
+                                        <select class="js-select2 form-control" id="txt_oilBrandedit" name="txt_oilBrandedit" style="width: 100%;" required>
+                                        </select>
+                                        <label for="material-text2">Oil Brand</label>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-material">
+                                        <input type="text" class="form-control" name="editoilType" id="editoilType" value="" />
+                                        <input type="hidden" class="form-control" name="idUpdate_oilType" id="idUpdate_oilType" value="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-alt-success" data-dismiss="modal" onclick="editOilType()">
+                    <i class="fa fa-check"></i> submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Pop Out Modal -->
+<script src="~/Scripts/New Js/SettingOilType.js"></script>
+
+
+
+
+
+

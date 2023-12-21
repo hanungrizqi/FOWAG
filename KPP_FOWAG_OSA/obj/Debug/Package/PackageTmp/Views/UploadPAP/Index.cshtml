@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<input type="text" id="hd_nrp" value="@Session["Nrp"].ToString()" hidden />
+<input type="text" id="hd_id_role" value="@Session["ID_Role"].ToString()" hidden />
+<input type="text" id="hd_name" value="@Session["Name"].ToString()" hidden />
+<input type="text" id="web_link" value="@Session["Web_Link"]" hidden />
+<input type="text" id="web_app" value="@Session["Web_Path"]" hidden />
+
+<div class="content">
+    <h2 class="content-heading"><b>Upload PAP</b></h2>
+
+    <!-- Dynamic Table Full -->
+    <div class="block">
+        <div class="block-header block-header-default">
+            <h3 class="block-title">Upload PAP</h3>
+            <div class="block-options">
+                <button type="submit" onclick="Upload()" class="btn btn-alt-success">
+                    <i class="fa fa-upload mr-5"></i> Upload
+                </button>
+            </div>
+        </div>
+        <div class="block-content block-content-full">
+            <form enctype="multipart/form-data" method="post" id="form_id" >
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <label>Upload File PAP</label><br /><br />
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="exFile" name="exFile" data-toggle="custom-file-input">
+                            <label class="custom-file-label" for="txt-pic">select File</label>
+                        </div>
+                    </div>
+                </div>
+                <span id="span_file" style="color:red;display:none">File PAP is required..!</span>
+
+                <div class="form-group row">
+                    <div class="col-md-12">
+                        <div class="form-material floating">
+                            <select class="js-select2 form-control" style="width: 100%" id="txt-format" name="txt-format">
+                                <option value="0">Pilih Format</option>
+                                <option value="1">Petrolab</option>
+                                <option value="2">Techenomics</option>
+                            </select>
+                            <label for="txt-format">Format</label>
+                        </div>
+                    </div>
+                </div>
+                <span id="span_format" style="color:red;display:none">Format File is required..!</span>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/New Js/UploadPAP.js"></script>

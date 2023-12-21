@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DB_ICT_BAR_PRINTING_KPT" Class="DB_BAR_PRINTINGDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=10.14.101.101\shpol;Initial Catalog=DB_ICT_BAR_PRINTING_KPT;User ID=sqlservices" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DB_ICT_BAR_PRINTING_KPTConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TBL_T_JOB_PRINTING" Member="TBL_T_JOB_PRINTINGs">
+    <Type Name="TBL_T_JOB_PRINTING">
+      <Column Name="PID" AutoSync="Never" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DSTRCT_CODE" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Column Name="PRINTER_NAME" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CODE_ID" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="JOB_TYPE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="STATUS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RESULT" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="LOADING_TIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="REQUEST_TIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

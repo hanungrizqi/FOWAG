@@ -1,0 +1,39 @@
+﻿@model IEnumerable<KPP_FOWAG_OSA.Models.VW_R_MENU>
+@{
+    ViewBag.url = Context.Request.Path;
+}
+
+<div class="content-side content-side-full">
+    <ul class="nav-main">
+        @foreach (var item in Model)
+        {
+            if (item.Sub_Menu == 1)
+            {
+                <li>
+                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-cup"></i>@item.Name_Menu</a>
+                    <ul>
+                        @foreach (var sub in ViewBag.Sub)
+                        {
+                            if (sub.ID_Menu == item.ID_Menu)
+                            {
+                                if ((sub.ID_Sub_Menu).ToString() != "6" || Session["ID_Role"].ToString() != "2")
+                                {
+                                    <li>
+                                        <a href="@ViewBag.Path@sub.Link_Sub_Menu">@sub.Sub_Menu_Description</a>
+                                    </li>
+                                }
+                            }
+
+                        }
+                    </ul>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="@ViewBag.Path@item.Link_Menu"><i class="si si-cup"></i><span class="sidebar-mini-hide">@item.Name_Menu</span></a>
+                </li>
+            }
+        }
+    </ul>
+</div>

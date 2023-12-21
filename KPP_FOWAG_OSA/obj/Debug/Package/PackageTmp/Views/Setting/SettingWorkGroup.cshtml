@@ -1,0 +1,150 @@
+﻿
+@{
+    ViewBag.Title = "Setting Work Group";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content">
+    <h2 class="content-heading"><b>Setting Work Group</b></h2>
+
+    <!-- Dynamic Table Full -->
+    <div class="block">
+        <div class="block-header block-header-default">
+            <h3 class="block-title">Table Work Group</h3>
+            <div class="block-options">
+                <button type="submit" class="btn btn-alt-success" data-toggle="modal" data-target="#ModalAddWorkGroup">
+                    <i class="fa fa-plus mr-5"></i> New Work Group
+                </button>
+            </div>
+        </div>
+        <div class="block-content block-content-full">
+            <table id="tblWorkGroup" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+                <thead>
+                    <tr style="width: 100%">
+                        <th style="width: 14%;"><b>Work Group</b></th>
+                        <th style="width: 65%;"><b>District</b></th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Pop Out Modal for Add New WorkGroup -->
+<div class="modal fade" id="ModalAddWorkGroup" tabindex="-1" role="dialog" aria-labelledby="modal-popout" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-popout" role="document">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent mb-0">
+                <div class="block-header bg-primary-dark">
+                    <h3 class="block-title">Add New WorkGroup</h3>
+                    <div class="block-options">
+                        <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                            <i class="si si-close"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="block-content">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <div class="form-material floating">
+                                        <select class="js-select2 form-control" id="dstrct" name="dstrct" style="width: 100%;" onchange="inputNRP()">
+                                        </select>
+                                        <label for="dstrct">Distrik</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <div class="form-material floating">
+                                        <select class="js-select2 form-control" id="WorkGroup" name="WorkGroup" style="width: 100%;" @*onclick="inputNRP()"*@>
+                                        </select>
+  
+                                        <label for="WorkGroup">Work Group</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-alt-success" data-dismiss="modal" onclick="addWorkGroup()">
+                    <i class="fa fa-check"></i> submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Pop Out Modal -->
+<!-- Pop Out Modal for edit WorkGroup-->
+<div class="modal fade" id="ModalEditWorkGroup" tabindex="-1" role="dialog" aria-labelledby="modal-popout" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-popout" role="document">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent mb-0">
+                <div class="block-header bg-primary-dark">
+                    <h3 class="block-title">Edit WorkGroup</h3>
+                    <div class="block-options">
+                        <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                            <i class="si si-close"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="block-content">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <div class="form-material">
+                                        <input type="text" class="form-control" name="editWG" id="editWG" value="" readonly />
+                                        <label for="editWG">Work Group Lama</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <div class="form-material">
+                                        <select class="js-select2 form-control" id="editDstrct" name="editDstrct" style="width: 100%;" onchange="edit_inputNRP()">
+                                        </select>
+                                        <label for="editdstrct">Distrik</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <div class="form-material">
+                                        <input type="hidden" class="form-control" name="idUpdate_WorkGroup" id="idUpdate_WorkGroup" value="" />
+                                        <select class="js-select2 form-control" id="editWorkGroup" name="editWorkGroup" style="width: 100%;" @*onclick="edit_inputNRP()"*@>
+                                        </select>
+                                        <label for="editWorkGroup">Work Group Baru</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-alt-success" data-dismiss="modal" onclick="editWorkGroup()">
+                    <i class="fa fa-check"></i> submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Pop Out Modal -->
+
+<script src="~/Scripts/New Js/SettingWorkGroup.js"></script>

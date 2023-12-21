@@ -1,0 +1,173 @@
+﻿
+@{
+    ViewBag.Title = "Setting Unit Type";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content">
+    <h2 class="content-heading"><b>Setting Unit Type</b></h2>
+
+    <!-- Dynamic Table Full -->
+    <div class="block">
+        <div class="block-header block-header-default">
+            <h3 class="block-title">Table Unit Type</h3>
+            <div class="block-options">
+                <button type="submit" class="btn btn-alt-success" data-toggle="modal" data-target="#ModalAddUnitType">
+                    <i class="fa fa-plus mr-5"></i> New Unit Type
+                </button>
+            </div>
+        </div>
+        <div class="block-content block-content-full">
+            <table id="tblUnitType" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+                <thead>
+                    <tr style="width: 100%">
+                        <th style="width: 14%;"><b>Unit Model</b></th>
+                        <th style="width: 65%;"><b>Comp Code</b></th>
+                        <th style="width: 65%;"><b>Maintenance Type</b></th>
+                        <th style="width: 65%;"><b>Component Label</b></th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- Pop Out Modal for Add New Unit Type -->
+<div class="modal fade" id="ModalAddUnitType" tabindex="-1" role="dialog" aria-labelledby="modal-popout" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-popout" role="document">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent mb-0">
+                <div class="block-header bg-primary-dark">
+                    <h3 class="block-title">Add New Unit Type</h3>
+                    <div class="block-options">
+                        <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                            <i class="si si-close"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="block-content">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <div class="form-material floating">
+                                        <select class="js-select2 form-control" id="txt_unitModel" name="txt_unitModel" style="width: 100%;">
+                                        </select>
+                                        <label for="txt_unitModel">Unit Model</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <div class="form-material floating">
+                                        <select class="js-select2 form-control" id="txt_type" name="txt_type" style="width: 100%;">
+                                        </select>
+                                        <label for="txt_type">Comp Code</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <div class="form-material floating">
+                                        <input type="text" class="form-control" name="txt_MtType" id="txt_MtType" value="" />
+                                        <label for="txt_MtType">Maintenance Type</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <div class="form-material floating">
+                                        <input type="text" class="form-control" name="txt_Component" id="txt_Component" value="" />
+                                        <label for="txt_Component">Component Label</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-alt-success" data-dismiss="modal" onclick="addUnitType()">
+                    <i class="fa fa-check"></i> submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Pop Out Modal -->
+
+<!-- Pop Out Modal for edit Unit Type-->
+<div class="modal fade" id="ModalEditUnitType" tabindex="-1" role="dialog" aria-labelledby="modal-popout" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-popout" role="document">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent mb-0">
+                <div class="block-header bg-primary-dark">
+                    <h3 class="block-title">Edit Unit Type</h3>
+                    <div class="block-options">
+                        <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                            <i class="si si-close"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="block-content">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <div class="form-material floating">
+                                        <select class="js-select2 form-control" id="txt_unitModeledit" name="txt_unitModeledit" style="width: 100%;" >
+                                        </select>
+                                        <label for="txt_unitModeledit">Unit Model</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <div class="form-material floating">
+                                        <select class="js-select2 form-control" id="txt_typeedit" name="txt_typeedit" style="width: 100%;">
+                                        </select>
+                                        <label for="txt_typeedit">Comp Code</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <div class="form-material">
+                                        <input type="text" class="form-control" name="txt_MtTypeedit" id="txt_MtTypeedit" value="" />
+                                        <label for="txt_MtTypeedit">Maintenance Type</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <div class="form-material">
+                                        <input type="text" class="form-control" name="txt_Componentedit" id="txt_Componentedit" value="" />
+                                        <label for="txt_Componentedit">Component Label</label>
+                                        <input type="text" class="form-control" name="txt_id" id="txt_id" style="visibility:hidden;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-alt-success" data-dismiss="modal" onclick="editUnitType()">
+                    <i class="fa fa-check"></i> submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END Pop Out Modal -->
+
+<script src="~/Scripts/New Js/SettingUnitType.js"></script>
+

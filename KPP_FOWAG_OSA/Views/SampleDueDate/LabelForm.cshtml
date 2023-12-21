@@ -1,0 +1,234 @@
+﻿
+@{
+    ViewBag.Title = "Label Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<input type="text" name="IDWO" id="IDWO" value="@ViewBag.WO" hidden />
+<input type="text" name="District_HD" id="District_HD" value="@ViewBag.District" hidden />
+<input type="text" name="Comp_Code" id="Comp_Code" value="@ViewBag.CompCode" hidden />
+<input type="text" name="Comp_Label" id="Comp_Label" value="@ViewBag.CompLabel" hidden />
+<input type="number" name="unitHMOilChanged" id="unitHMOilChanged" value="0" hidden />
+
+<div class="content">
+    <h2 class="content-heading"><b>Sample Label Form</b></h2>
+
+    <!-- Dynamic Table Full -->
+    <div class="block">
+        <div class="block-header block-header-default">
+            <h3 class="block-title">Sample Label Form</h3>
+            @*<label for="txt_status" id="txt_status">Status</label>*@
+            @*<label id="txt_status" name="txt_status"></label>*@
+            @*<b id="paragraf1"><i class="fa fa-info"></i>Status</b>*@
+
+
+            <div class="block-options">
+                <a href="/SampleDueDate/Create" class="btn btn-alt-warning">
+                    <i class="fa fa-arrow-left mr-5"></i> Back
+                </a>
+                <button type="submit" onclick="saveLabelForm()" class="btn btn-alt-success">
+                    <i class="fa fa-save mr-5"></i> Save
+                </button>
+                <button type="submit" @*onclick="printLabel()"*@ class="btn btn-alt-info" data-toggle="modal" data-target="#ModalPrint">
+                    <i class="fa fa-print mr-5"></i> Print
+                </button>
+                @*<button type="submit"  class="btn btn-alt-info">*@
+                @*<p><i class="fa fa-info"></i> Status</p>*@
+                @*</button>*@
+
+
+
+            </div>
+        </div>
+
+        <div class="block-content">
+            <form action="#" method="post" onsubmit="return false;">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_labNumber">Lab Number</label>
+
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="txt_labNumber" name="txt_labNumber" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_WONumber">WO Number</label>
+
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="txt_WONumber" name="txt_WONumber" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_labDistrict">District</label>
+
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="txt_labDistrict" name="txt_labDistrict" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_unitModel">Unit Model</label>
+
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="txt_unitModel" name="txt_unitModel" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_unitNumber">Unit Number</label>
+
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="txt_unitNumber" name="txt_unitNumber" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_unitHM">unit HM</label>
+
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="txt_unitHM" name="txt_unitHM" required>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="js-select2 form-control" id="txt_hmkm" name="txt_hmkm" required>
+                                    <option value="HM">HM</option>
+                                    <option value="KM">KM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_manufacture">Manufacture</label>
+
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="txt_manufacture" name="txt_manufacture" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_component">Component</label>
+
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="txt_component" name="txt_component" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_samplingDate">Sampling Date</label>
+
+                            <div class="col-lg-7">
+                                <input type="date" class="form-control" id="txt_samplingDate" name="txt_samplingDate" required />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_oilBrand">Oil Brand</label>
+
+                            <div class="col-lg-7">
+                                @*<input type="text" class="form-control" id="txt_oilBrand" name="txt_oilBrand" required/>*@
+                                <select class="js-select2 form-control" onchange="addOilType()" id="txt_oilBrand" name="txt_oilBrand" style="width: 100%;" required>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_oilType">Oil Type</label>
+
+                            <div class="col-lg-7">
+                                @*<input type="text" class="form-control" id="txt_oilType" name="txt_oilType" required/>*@
+                                <select class="js-select2 form-control" onchange="addOilSpec()" id="txt_oilType" name="txt_oilType" style="width: 100%;" required>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_oilSpec">Oil Spec</label>
+
+                            <div class="col-lg-7">
+                                @*<input type="text" class="form-control" id="txt_oilSpec" name="txt_oilSpec" required>*@
+                                <select class="js-select2 form-control" @*onchange="getPIC()"*@ id="txt_oilSpec" name="txt_oilSpec" style="width: 100%;" required>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_oilHM">Oil HM</label>
+
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="txt_oilHM" name="txt_oilHM" disabled>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="js-select2 form-control" id="txt_oilhmkm" name="txt_oilhmkm" required>
+                                    <option value="HM">HM</option>
+                                    <option value="KM">KM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_nrp">NRP</label>
+                            <div class="col-lg-7">
+                                <select class="js-select2 form-control" onchange="getPIC()" id="txt_nrp" name="txt_nrp" style="width: 100%;" required>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_pic">PIC</label>
+
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="txt_pic" name="txt_pic" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_oilChanges">Oil Changed?</label>
+
+                            <div class="col-md-3">
+                                <select class="js-select2 form-control" id="txt_oilChanges" name="txt_oilChanges" required>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+<!-- Pop Out Modal for print label -->
+<div class="modal fade" id="ModalPrint" tabindex="-1" role="dialog" aria-labelledby="modal-popout" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-popout" role="document">
+        <div class="modal-content">
+            <div class="block block-themed block-transparent mb-0">
+                <div class="block-header bg-primary-dark">
+                    <h3 class="block-title">Select Printer</h3>
+                    <div class="block-options">
+                        <button type="button" class="btn-block-option" data-dismiss="modal" aria-label="Close">
+                            <i class="si si-close"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="block-content">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <div class="form-material floating">
+                                        <select class="js-select2 form-control" id="txt_printer" name="txt_printer" style="width: 100%;" required>
+                                        </select>
+                                        <label for="material-text2">Printer</label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-alt-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-alt-success" data-dismiss="modal" onclick="printLabel()">
+                    <i class="fa fa-check"></i> submit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="~/Scripts/New Js/Labelform.js"></script>

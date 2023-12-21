@@ -1,0 +1,276 @@
+﻿@{ ViewBag.Title = "Home Page"; }
+
+<!--<input type="text" name="role" id="role" value="@Session["ID_Role"]" hidden />
+
+<div class="content">
+    <h2 class="content-heading">Dashboard</h2>
+    <div class="block-header block-header-default">
+        <h3 class="block-title">Table Sample Due Date</h3>
+        <div class="block-options">
+
+        </div>
+    </div>
+    <div class="block-content block-content-full">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="input-group">
+                    <input type="text" name="txt_WO" id="txt_WO" class="form-control" placeholder="input work order" />
+                    <div class="input-group-append">
+                        <button type="button" onclick="newLabel()" class="btn btn-secondary">New Label</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="block">
+        <div class="block-header block-header-default">
+            <h3 class="block-title">Sample Label Form</h3>
+            <a href="/SampleDueDate/Update" class="btn btn-alt-warning">
+                <i class="fa fa-arrow-left mr-5"></i> Back
+            </a>
+            <div class="block-options">
+                <button style="display:none" type="submit" id="btn-update" onclick="saveLabelForm()" class="btn btn-alt-success">
+                    <i class="fa fa-save mr-5"></i> Update Status
+                </button>
+                <button type="submit" onclick="printLabel()" class="btn btn-alt-info">
+                    <i class="fa fa-print mr-5"></i> Print
+                </button>
+
+            </div>
+        </div>
+
+        <div class="block-content">
+            <form action="#" method="post" onsubmit="return false;">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_labNumber">Lab Number</label>
+
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="txt_labNumber" name="txt_labNumber" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_WONumber">WO Number</label>
+
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="txt_WONumber" name="txt_WONumber" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_labDistrict">District</label>
+
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="txt_labDistrict" name="txt_labDistrict" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_unitModel">Unit Model</label>
+
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="txt_unitModel" name="txt_unitModel" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_unitNumber">Unit Number</label>
+
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="txt_unitNumber" name="txt_unitNumber" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_unitHM">unit HM</label>
+
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="txt_unitHM" name="txt_unitHM" disabled>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="js-select2 form-control" id="txt_hmkm" name="txt_hmkm" disabled>
+                                    <option value="HM">HM</option>
+                                    <option value="KM">KM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_manufacture">Manufacture</label>
+
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="txt_manufacture" name="txt_manufacture" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_component">Component</label>
+
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="txt_component" name="txt_component" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_samplingDate">Sampling Date</label>
+
+                            <div class="col-lg-7">
+                                <input type="date" class="form-control" id="txt_samplingDate" name="txt_samplingDate" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_oilBrand">Oil Brand</label>
+
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="txt_oilBrand" name="txt_oilBrand" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_oilType">Oil Type</label>
+
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="txt_oilType" name="txt_oilType" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_oilSpec">Oil Spec</label>
+
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="txt_oilSpec" name="txt_oilSpec" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_oilHM">Oil HM</label>
+
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" id="txt_oilHM" name="txt_oilHM" disabled>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="js-select2 form-control" id="txt_oilhmkm" name="txt_oilhmkm" disabled>
+                                    <option value="HM">HM</option>
+                                    <option value="KM">KM</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_nrp">NRP</label>
+                            <div class="col-lg-7">
+                                <select class="js-select2 form-control" onchange="getPIC()" id="txt_nrp" name="txt_nrp" style="width: 100%;" disabled>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_pic">PIC</label>
+
+                            <div class="col-lg-7">
+                                <input type="text" class="form-control" id="txt_pic" name="txt_pic" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label" for="txt_oilChanges">Oil Changed?</label>
+
+                            <div class="col-md-3">
+                                <select class="js-select2 form-control" id="txt_oilChanges" name="txt_oilChanges" disabled>
+                                    <option value="1">Yes</option>
+                                    <option value="0">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>-->
+
+
+    @*<script src="~/Scripts/page/SampleDueDate1.js"></script>*@
+    <!--<script>
+        var webLink = $("#web_link").val();
+        var role = $("#role").val();
+        addDistrict();
+        geteditLabelForm();
+
+        function changeDSTRCT(distrik) {
+            //tableSent.columns(1).search(distrik).draw();
+        }
+
+
+        function addDistrict() {
+            $.ajax({
+                url: webLink + "/api/SampleDueDate/Get_District", //URI,
+                type: "GET",
+                cache: false,
+                success: function (result) {
+                    $('#txt_DSTRCT').empty();
+                    text = '<option value="">Select District</option>';
+                    $.each(result.Data, function (key, val) {
+                        text += '<option value="' + val.dstrct_code + '">' + val.dstrct_code + '</option>';
+                    });
+                    $("#txt_DSTRCT").append(text);
+                }
+            });
+        }
+
+        function newLabel() {
+            var DataWo = $("#txt_WO").val();
+            var district = $("#txt_DSTRCT").val();
+            if (DataWo == "") {
+                return;
+            } else {
+                $.ajax({
+                    url: $("#web_link").val() + "/api/SampleDueDate/Get_Review_ByID?labnum=" + DataWo, //URI
+                    success: function (result) {
+                        if (result.Data == null) {
+                            Swal.fire(
+                                'Error!',
+                                'Lab Number not found',
+                                'warning'
+                            );
+                        } else {
+                            console.log(result.Data);
+                            //window.location.href = `/SampleDueDate/LabelForm_Unschedule?wo=${result.Data.WO}&dstrct=${district}`;
+                        }
+                    }
+
+                })
+
+            }
+        }
+
+        function geteditLabelForm() {
+            $.ajax({
+                url: $("#web_link").val() + "/api/SampleDueDate/Get_Review_ByID?labnum=" + "PCNS20220000", //URI
+                success: function (result) {
+
+                    document.getElementById('txt_labNumber').value = result.Data.LabNumber;
+                    document.getElementById('txt_WONumber').value = result.Data.NoWO;
+                    document.getElementById('txt_labDistrict').value = result.Data.district;
+                    document.getElementById('txt_unitModel').value = result.Data.UnitModel;
+                    document.getElementById('txt_unitNumber').value = result.Data.UnitNumber;
+                    document.getElementById('txt_unitHM').value = result.Data.UnitHM;
+                    document.getElementById('txt_manufacture').value = result.Data.Manufacture;
+                    document.getElementById('txt_component').value = result.Data.ComponentCode + '-' + result.Data.Component;
+                    if (result.Data.SamplingDate != null) {
+                        const tanggal = moment(result.Data.SamplingDate).format("YYYY-MM-DD");
+                        document.getElementById('txt_samplingDate').value = tanggal;
+                    }
+                    document.getElementById('txt_oilBrand').value = result.Data.OilBrand;
+                    document.getElementById('txt_oilType').value = result.Data.OilType;
+                    document.getElementById('txt_oilSpec').value = result.Data.OilSpec;
+                    document.getElementById('txt_oilHM').value = result.Data.OilHM;
+                    if (result.Data.NRP != null) {
+                        $("#txt_nrp").val(result.Data.NRP).trigger('change');
+                    } if (result.Data.OilChanged != null) {
+                        $("#txt_oilChanges").val(result.Data.OilChanged).trigger('change');
+                    } if (result.Data.TypeOilHM != null) {
+                        $("#txt_oilhmkm").val(result.Data.TypeOilHM).trigger('change');
+                        $("#txt_hmkm").val(result.Data.TypeOilHM).trigger('change');
+                    }
+
+                    
+
+                }
+            })
+        }
+
+
+    </script>-->
+

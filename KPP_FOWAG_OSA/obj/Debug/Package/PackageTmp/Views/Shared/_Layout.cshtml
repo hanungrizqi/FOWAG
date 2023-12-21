@@ -1,0 +1,265 @@
+﻿<!doctype html>
+<html lang="en" class="no-focus">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/others")
+
+    <title>@ViewBag.Title | KPP FOWAG</title>
+
+    <link rel="shortcut icon" href="~/Content/Images/logoKPP1-noBG.png">
+    <link rel="icon" type="image/png" sizes="192x96" href="~/Content/Images/logoKPP1-noBG.png">
+    <!-- Stylesheets -->
+    <!-- Fonts and Codebase framework -->
+    <link href="~/Content/fonts-googleapis.css" rel="stylesheet" />
+
+    <link href="~/Scripts/DataTables4/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    @*<link href="~/Scripts/DataTables4/css/responsive.bootstrap4.min.css" rel="stylesheet" />*@
+
+    <link rel="stylesheet" href="~/Content/Template/assets/js/plugins/select2/css/select2.min.css">
+    <link rel="stylesheet" id="css-main" href="~/Content/Template/assets/css/codebase.min.css">
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+    <script src="~/Content/Template/assets/js/codebase.core.min.js"></script>
+    <script src="~/Content/Template/assets/js/codebase.app.min.js"></script>
+
+    <!-- Page JS Plugins -->
+    <script src="~/Scripts/DataTables4/js/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/DataTables4/js/dataTables.bootstrap4.min.js"></script>
+    @*<script src="~/Scripts/DataTables4/js/dataTables.responsive.min.js"></script>*@
+    @*<script src="~/Scripts/DataTables4/js/responsive.bootstrap4.min.js"></script>*@
+
+    <script src="~/Content/Template/assets/js/plugins/bootstrap-notify/bootstrap-notify.min.js"></script>
+    <script src="~/Content/Template/assets/js/plugins/es6-promise/es6-promise.auto.min.js"></script>
+
+    <script src="~/Content/Template/assets/js/plugins/select2/js/select2.full.min.js"></script>
+    <script src="~/Scripts/sweetalert2.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+
+    <script src="~/Scripts/qrcode.js"></script>
+
+    <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
+    <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/flat.min.css"> -->
+    <!-- END Stylesheets -->
+</head>
+<body>
+
+    <input type="text" id="hd_nrp" value="@Session["Nrp"].ToString()" hidden />
+    <input type="text" id="hd_id_role" value="@Session["ID_Role"].ToString()" hidden />
+    <input type="text" id="hd_name" value="@Session["Name"].ToString()" hidden />
+    <input type="text" id="web_link" value="@Session["Web_Link"]" hidden />
+
+    <div id="overlay">
+        <div class="cv-spinner">
+            <span class="spinner"></span>
+        </div>
+    </div>
+
+    <div id="page-container" class="sidebar-o enable-page-overlay side-scroll page-header-modern main-content-boxed">
+        <!-- Sidebar -->
+        <!--
+        Helper classes
+
+        Adding .sidebar-mini-hide to an element will make it invisible (opacity: 0) when the sidebar is in mini mode
+        Adding .sidebar-mini-show to an element will make it visible (opacity: 1) when the sidebar is in mini mode
+            If you would like to disable the transition, just add the .sidebar-mini-notrans along with one of the previous 2 classes
+
+        Adding .sidebar-mini-hidden to an element will hide it when the sidebar is in mini mode
+        Adding .sidebar-mini-visible to an element will show it only when the sidebar is in mini mode
+            - use .sidebar-mini-visible-b if you would like to be a block when visible (display: block)
+    -->
+        <nav id="sidebar">
+            <!-- Sidebar Content -->
+            <div class="sidebar-content">
+                <!-- Side Header -->
+                <div class="content-header content-header-fullrow px-15">
+                    <!-- Mini Mode -->
+                    <div class="content-header-section sidebar-mini-visible-b">
+                        <!-- Logo -->
+                        <span class="content-header-item font-w700 font-size-xl float-left animated fadeIn">
+                            <span class="text-dual-primary-dark">c</span><span class="text-primary">b</span>
+                        </span>
+                        <!-- END Logo -->
+                    </div>
+                    <!-- END Mini Mode -->
+                    <!-- Normal Mode -->
+                    <div class="content-header-section text-center align-parent sidebar-mini-hidden">
+                        <!-- Close Sidebar, Visible only on mobile screens -->
+                        <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
+                        <button type="button" class="btn btn-circle btn-dual-secondary d-lg-none align-v-r" data-toggle="layout" data-action="sidebar_close">
+                            <i class="fa fa-times text-danger"></i>
+                        </button>
+                        <!-- END Close Sidebar -->
+                        <!-- Logo -->
+                        <div class="content-header-item">
+                            <a class="link-effect font-w700" href="/Home/Index">
+                                <i class="si si-fire text-primary"></i>
+                                <span class="font-size-xl text-dual-primary-dark">KPP</span><span class="font-size-xl text-primary">FOWAG</span>
+                            </a>
+                        </div>
+                        <!-- END Logo -->
+                    </div>
+                    <!-- END Normal Mode -->
+                </div>
+                <!-- END Side Header -->
+                <!-- Side User -->
+                <div class="content-side content-side-full content-side-user px-10 align-parent">
+                    <!-- Visible only in mini mode -->
+                    <div class="sidebar-mini-visible-b align-v animated fadeIn">
+                        <img class="img-avatar img-avatar32" src="~/Content/Template/assets/media/avatars/avatar15.jpg" alt="">
+                    </div>
+                    <!-- END Visible only in mini mode -->
+                    <!-- Visible only in normal mode -->
+                    <div class="sidebar-mini-hidden-b text-center">
+                        <a class="img-link" href="#">
+                            <img class="img-avatar" src="~/Content/Template/assets/media/avatars/avatar15.jpg" alt="">
+                        </a>
+                        <ul class="list-inline mt-10">
+                            <li class="list-inline-item">
+                                <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
+                                <a class="link-effect text-dual-primary-dark" data-toggle="layout" data-action="sidebar_style_inverse_toggle" href="javascript:void(0)">
+                                    <i class="si si-drop"></i>
+                                </a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="link-effect text-dual-primary-dark" href="/Login/Logout">
+                                    <i class="si si-logout"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- END Visible only in normal mode -->
+                </div>
+                <!-- END Side User -->
+                <!-- Side Navigation -->
+                @Html.Action("Menu", "Menu")
+                <!-- END Side Navigation -->
+            </div>
+            <!-- Sidebar Content -->
+        </nav>
+        <div class="modal-loading"></div>
+        <!-- END Sidebar -->
+        <!-- Header -->
+        <header id="page-header">
+            <!-- Header Content -->
+            <div class="content-header">
+                <!-- Left Section -->
+                <div class="content-header-section">
+                    <!-- Toggle Sidebar -->
+                    <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
+                    <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="sidebar_toggle">
+                        <i class="fa fa-navicon"></i>
+                    </button>
+                    <!-- END Toggle Sidebar -->
+                    <!-- END Layout Options -->
+                </div>
+                <!-- END Left Section -->
+                <!-- Right Section -->
+                <div class="content-header-section">
+                    <!-- Notifications -->
+                    @if (Session["ID_Role"].ToString() == "1" || Session["ID_Role"].ToString() == "5")
+                    {
+        <div class="btn-group" role="group">
+            <button type="button" onclick="scanQR()" class="btn btn-rounded btn-dual-secondary" data-toggle="modal" data-target="#ModalScan">
+                <i class="fa fa-camera mr-5"></i> Scan
+            </button>
+        </div>}
+                    <!-- END Notifications -->
+                    <!-- User Dropdown -->
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-rounded btn-dual-secondary" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-user d-sm-none"></i>
+                            <span class="d-none d-sm-inline-block">@Session["Name"]</span>
+                            <i class="fa fa-angle-down ml-5"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right min-width-200" aria-labelledby="page-header-user-dropdown">
+                            <h5 class="h6 text-center py-10 mb-5 border-b text-uppercase">@Session["nrp"]</h5>
+
+                            <a class="dropdown-item" href="/Login/Logout">
+                                <i class="si si-logout mr-5"></i> Sign Out
+                            </a>
+                        </div>
+                    </div>
+                    <!-- END User Dropdown -->
+
+                </div>
+                <!-- END Right Section -->
+            </div>
+            <!-- END Header Content -->
+
+        </header>
+        <!-- END Header -->
+        <!-- Main Container -->
+        <main id="main-container">
+            <!-- Page Content -->
+            @RenderBody()
+            <!-- END Page Content -->
+        </main>
+        <!-- END Main Container -->
+        <!-- Footer -->
+        <footer id="page-footer" class="opacity-0">
+            <div class="content py-20 font-size-xs clearfix">
+                <div class="float-right">
+                    Crafted with <i class="fa fa-heart text-pulse"></i> by <a class="font-w600" href="https://1.envato.market/ydb" target="_blank">pixelcave</a>
+                </div>
+                <div class="float-left">
+                    <a class="font-w600" href="#">Kalimantan Prima Persada</a> &copy; <span class="js-year-copy"></span>
+                </div>
+            </div>
+        </footer>
+        <!-- END Footer -->
+    </div>
+
+    <!-- Pop Out Modal for Add Akses Menu -->
+    <div class="modal fade" id="ModalScan" tabindex="-1" role="dialog" aria-labelledby="modal-popout" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-popout" role="document">
+            <div class="modal-content">
+                <div class="block block-themed block-transparent mb-0">
+                    <div class="block-header bg-primary-dark">
+                        <h3 class="block-title">Scan QR Code</h3>
+                    </div>
+                    <div class="block-content">
+                        <div class="col-sm-12" id="qrPreview">
+                            <video id="preview" class="p-1 border" style="width:100%;"></video>
+                        </div>
+                        <div class="col-sm-12" id="idLabelPreview">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-alt-secondary" onclick="closeModal()" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-alt-success" data-dismiss="modal" onclick="updateStatus()" id="btnUpdate">
+                        <i class="fa fa-check"></i> Update Status
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END Pop Out Modal -->
+    <!-- END Page Container -->
+
+    <script type="text/javascript">
+
+        var url = window.location;
+
+        var element = $('ul.nav-main li a').filter(function () {
+            return this.href == url;
+        });
+        element.addClass('active');
+        element.parent().parent().parent().addClass("open");
+
+    </script>
+    <script src="~/Scripts/instascan.min.js"></script>
+    <script src="~/Scripts/page/layout.js"></script>
+
+</body>
+</html>
